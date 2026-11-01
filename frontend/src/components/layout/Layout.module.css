@@ -1,0 +1,86 @@
+/* Layout.module.css */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--navy-950);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient background */
+.bgOrbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -100px;
+  background: radial-gradient(circle, #3b82f6, #6366f1);
+}
+
+.orb2 {
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  left: -100px;
+  background: radial-gradient(circle, #8b5cf6, #3b82f6);
+  animation-delay: -3s;
+}
+
+.orb3 {
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #22d3ee, #6366f1);
+  animation-delay: -5s;
+}
+
+/* Mobile overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 5, 15, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay { display: block; }
+}
+
+/* Main content area */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin-left: 260px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .main { margin-left: 0; }
+}
+
+.content {
+  flex: 1;
+  padding: 2rem 0;
+  min-height: calc(100vh - 64px);
+}

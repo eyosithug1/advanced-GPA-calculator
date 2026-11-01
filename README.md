@@ -1,47 +1,79 @@
-# GPA Calculator Pro 🎓
+# GPA Calculator Pro (MERN Stack Architecture)
 
-Hey there! 👋 Welcome to **GPA Calculator Pro**. I built this project because keeping track of grades and calculating GPAs manually (or using clunky old websites) is a hassle. 
+Advanced academic performance tracking application built on the MERN stack (MongoDB, Express, React, Node.js). Engineered with dark glassmorphism aesthetics, real-time quality point computations, target GPA scenario planning, and MongoDB persistence.
 
-This is a modern, fast, and interactive GPA calculator that actually looks good and feels great to use. It doesn't just crunch the numbers—it gives you visual insights into your academic progress so you know exactly where you stand.
+---
 
-## ✨ What it does
+## Architecture Overview
 
-- **Instant GPA Math:** Just plug in your courses, credits, and grades, and it handles the math instantly.
-- **Visual Progress:** Includes interactive charts so you can see your grade trends over time, rather than just staring at numbers.
-- **Smooth Experience:** I added some nice animations and micro-interactions so it feels like a premium app, not a spreadsheet.
-- **Mobile Friendly:** Works perfectly on your phone if you need to check your grades on the go.
+```
+advanced-GPA-calculator/
+├── backend/
+│   ├── config/              # MongoDB connection lifecycle
+│   ├── controllers/         # Auth, User, Semester, and Course controllers
+│   ├── middleware/          # JWT authorization and centralized error handling
+│   ├── models/              # User, Semester, and Course Mongoose schemas
+│   ├── routes/              # Modular REST API endpoints
+│   ├── .env.example         # Environment template
+│   └── server.js            # Express application entry point
+│
+└── frontend/
+    ├── src/
+    │   ├── components/      # Glassmorphic UI layout (Sidebar, Header, Layout)
+    │   ├── pages/           # Dashboard, Calculator, Cumulative, Analytics, Settings, Auth
+    │   ├── services/        # Axios client with JWT request interceptors
+    │   ├── store/           # Zustand state management (authStore & gpaStore)
+    │   ├── utils/           # Client-side GPA engine & scenario models
+    │   ├── App.jsx          # Protected route hierarchy with Framer Motion
+    │   └── index.css        # Core design system and CSS tokens
+    └── package.json         # React 18, Vite, Recharts, Framer Motion
+```
 
-## 🛠️ How it's built
+---
 
-I wanted to use a modern stack to make it as snappy as possible:
+## Core Capabilities
 
-- **React & Vite:** For a blazing fast development and user experience.
-- **Tailwind CSS:** To keep the styling clean and responsive without writing a ton of custom CSS.
-- **Framer Motion:** For those buttery smooth animations.
-- **Recharts:** Because visualizing data makes it way easier to understand.
-- **Zustand:** For keeping the state management simple and lightweight.
+- **Semester GPA Calculator**: Real-time evaluation of courses, credit weightings, and letter grades across standard 4.0 and weighted 5.0 scales.
+- **Cumulative Transcript Manager**: Aggregates term histories, combining granular course lists with quick-entry prior college credit records.
+- **What-If Scenario Planner**: Computes the required grade point average needed across remaining credits to graduate with targeted academic distinctions.
+- **Analytics & Grade Trajectories**: Interactive Recharts visualizations depicting term-by-term trends and letter grade distributions.
+- **Academic Profile & Data Backup**: Profile configuration, dynamic scale switching, and complete JSON transcript export.
 
-## 🚀 Want to run it locally?
+---
 
-If you want to clone this and play around with the code, here's how to get it running on your machine:
+## Contributor & Git Workflow Rules
 
-1. **Clone the repo** (or just download the folder) and open your terminal.
-2. **Install the packages:**
-   ```bash
-   npm install
-   ```
-3. **Spin up the dev server:**
-   ```bash
-   npm run dev
-   ```
-4. Open the link it gives you (usually `http://localhost:5173`) in your browser.
+All project contributors (@eyosithug1, @BereketVM21) must adhere to these standards:
 
-## 📜 Scripts you might need
+1. **No Micro-Commit Spam**: Group related changes into clean, atomic commits.
+2. **Conventional Commits**: Format commit messages strictly as `<type>(<scope>): <summary>` (e.g., `feat(auth): add jsonwebtoken verification`).
+3. **Branch & PR Workflow**: Direct pushes to `main` are prohibited. Create dedicated `feat/*` or `fix/*` branches and submit Pull Requests for peer review.
+4. **Pre-Push Build Verification**: Run `npm run build` locally before pushing to guarantee clean production compilation.
+5. **No Secret Commits**: Never commit `.env` files. Maintain updated `.env.example` templates.
 
-- `npm run dev` - Starts the local server
-- `npm run build` - Bundles the app for production
-- `npm run lint` - Checks the code for any formatting issues
+---
 
-## 🤝 Feel free to contribute!
+## Local Development Setup
 
-If you find a bug, have an idea for a new feature, or want to improve the UI even more, feel free to open an issue or drop a pull request. I'm always open to feedback!
+### 1. Backend Server
+```bash
+cd backend
+cp .env.example .env
+npm install
+npm run dev
+```
+API runs on `http://localhost:5000` (Health Check: `/health`).
+
+### 2. Frontend Application
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Application interface runs on `http://localhost:5173`.
+
+### 3. Production Build Validation
+```bash
+cd frontend
+npm run build
+```
